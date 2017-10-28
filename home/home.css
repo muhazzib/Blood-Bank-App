@@ -1,0 +1,86 @@
+.searchbtn{
+    background-color: darkred;
+    margin-left: 1%;
+    border-color: darkred !important;
+    opacity: 0.8;
+}
+.searchbtn:hover{
+    opacity: 1;
+    
+    background-color: darkred !important;
+    border-color: darkred !important
+}
+.donatebloodclass{
+margin-top: 3px;
+position: relative;
+right: 3px;
+text-decoration: underline;
+}
+.mainhomediv{
+    position: relative;
+    top: 10px !important;
+}
+
+.animate-bottom {
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 2s;
+    animation-name: animatebottom;
+    animation-duration: 2s
+  }
+
+  @-webkit-keyframes animatebottom {
+    from { bottom:-100px; opacity:0.5 } 
+    to { bottom:0px; opacity:1 }
+  }
+  
+  @keyframes animatebottom { 
+    from{ bottom:-100px; opacity:0.5 } 
+    to{ bottom:0; opacity:1 }
+  }
+
+  .donatebtn{
+    background-color: darkred !important;
+    border-color: darkred;
+    opacity: 0.8;
+    
+}
+
+.donatebtn:hover{
+    opacity: 1;
+    background-color: darkred !important;
+    border-color: darkred !important;
+}
+
+.customcardstyle{
+margin:  35px 0px 25px 0px;
+}
+
+.cardsecondheadingstyle{
+    float: right;
+    position: relative;
+    top: 3px;
+    margin: 0% 1%;
+}
+.detailanchor{
+    float: right;
+    position: relative;
+    top: 3px;
+    margin: 0% 1%;
+    font-size: 13px;
+    color: lightblue !important;
+}
+.detailanchor:hover{
+    color:blue !important;
+    text-decoration: underline !impor   tant
+}
+
+.customnav{
+    background-color: red !important;
+}
+.customnav>a{
+    color: white !important;
+}
+
+.customh3style{
+    margin-top: 2%;
+}

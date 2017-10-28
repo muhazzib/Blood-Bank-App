@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Home</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="home.css">
+
+  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDmB7utLPffmIPo6EGFSN7TMfi-DXT3UU0",
+      authDomain: "mark-sheet-generator.firebaseapp.com",
+      databaseURL: "https://mark-sheet-generator.firebaseio.com",
+      projectId: "mark-sheet-generator",
+      storageBucket: "mark-sheet-generator.appspot.com",
+      messagingSenderId: "262522422607"
+    };
+    firebase.initializeApp(config);
+  </script>
+</head>
+
+<body>
+    <nav class="navbar justify-content-between customnav">
+        <a class="navbar-brand">Blood Bank App</a>
+        <div class="form-inline">
+            <h5 id="greetuser" class="mr-sm-2"></h5>
+            <button class="btn btn btn-light my-2 my-sm-0" type="submit" onclick="logoutfunction()">Logout</button>
+        </div>
+    </nav>
+  <div class="container form  mainhomediv">
+    <div class="row justify-content-center">
+      <select class="custom-select" id="donorbloodgroup2">
+            <option selected>Please select your blood group</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+          </select>
+      <button type="button" class="btn btn-primary searchbtn" onclick="filterfunction()">Search</button>
+    </div>
+    <div class="row justify-content-center">
+      <a href="#" class="donatebloodclass" data-toggle="modal" data-target="#exampleModal">Click here to donate blood</a>
+      <!-- Modal -->
+      <div class="modal animate-bottom" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Donate Blood</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true" class="customclose">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+
+
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Name</label>
+                <input type="name" id="username" class="form-control" placeholder="Enter Name">
+              </div>
+
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email</label>
+                <input type="email" id="email" class="form-control" placeholder="Enter Email Address">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              </div>
+
+
+
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Age</label>
+                <input type="number" id="age" class="form-control" placeholder="Enter Your Age">
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Weight</label>
+                <input type="number" id="weight" class="form-control" placeholder="Enter Your Weight in (kg)">
+              </div>
+
+              <div class="form-group">
+                <select class="custom-select" id="donorbloodgroup">
+                              <option selected>Please select your blood group</option>
+                              <option value="O+">O+</option>
+                              <option value="O-">O-</option>
+                              <option value="A+">A+</option>
+                              <option value="A-">A-</option>
+                              <option value="B+">B+</option>
+                              <option value="B-">B-</option>
+                              <option value="AB+">AB+</option>
+                              <option value="AB-">AB-</option>
+                            </select> </div>
+
+              <button type="submit" class="btn btn-primary donatebtn" onclick="donate()">Donate</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+      <div class="modal fade" id="successmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true" class="customclose">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+
+
+
+              <p>Your application for donating blood has been accepted. You'll be contacted soon. Thankyou</p>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="container">
+    <div class="row justify-content-center" id="output">        
+    </div>
+  </div>
+  <div class="container">
+      
+  <div class="row justify-content-center" id="output2"></div>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+  crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+  crossorigin="anonymous"></script>
+<script src="home.js"></script>
+
+</html>
