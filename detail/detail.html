@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Details</title>
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+    crossorigin="anonymous">
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDmB7utLPffmIPo6EGFSN7TMfi-DXT3UU0",
+        authDomain: "mark-sheet-generator.firebaseapp.com",
+        databaseURL: "https://mark-sheet-generator.firebaseio.com",
+        projectId: "mark-sheet-generator",
+        storageBucket: "mark-sheet-generator.appspot.com",
+        messagingSenderId: "262522422607"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <style>
+    .customdetailstyle{
+margin: 5%;
+    }
+    </style>
+</head>
+<body onload="renderdetail()">
+  <div class="container">
+      <div id="detailrenderdiv"></div>
+      
+  </div>
+</body>
+<script src="detail.js"></script>
+</html>
