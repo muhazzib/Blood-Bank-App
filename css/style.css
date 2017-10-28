@@ -1,0 +1,57 @@
+.form{
+    width: 400px !important;
+    position: relative;
+    top: 50px;
+    border: 2px double black;
+    background-color: white !important;
+    padding: 2% 1%;
+    border-radius: 5px
+}
+.animate-bottom {
+    position: relative;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 3s;
+    animation-name: animatebottom;
+    animation-duration: 3s
+  }
+
+  @-webkit-keyframes animatebottom {
+    from { bottom:-100px; opacity:0 } 
+    to { bottom:0px; opacity:1 }
+  }
+  
+  @keyframes animatebottom { 
+    from{ bottom:-100px; opacity:0 } 
+    to{ bottom:0; opacity:1 }
+  }
+img{
+    width:300px;
+    height:250px;
+    position: relative;
+    left: 6%;
+}
+
+button{
+    opacity: 0.8;
+    background-color: darkred !important;
+    border-color: darkred !important
+}
+button:hover{
+    opacity: 1;
+}
+#signup{
+    display: none;
+}
+input{
+    margin-bottom: 2px !important;
+}
+a:hover{
+color: blue !important
+}
+
+body{
+    background-color: black !important
+}
+
+
+
